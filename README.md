@@ -1,16 +1,37 @@
 # wempro_project
 
-A new Flutter project.
+A new Flutter House Cleaner project with GetX.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Dynamic Form Generation
+- Real-Time Form Updates
+- User-Friendly Interface
+- Multiple Input Types
+- API Integration(Dynamic Data Fetching,Error Handling for API Calls)
+- Responsive and clean UI design
+- State management using GetX
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Apk File Link
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Download the APK](https://drive.google.com/file/d/1htdJnadO1Hb_aaUDX_p2R5o5tBA9qsWS/view?usp=sharing)
+
+## screenshots
+
+[Input Screen](assets/screenshots/scr1.jpg)
+[Summary Screen](assets/screenshots/scr2.jpg)
+
+### Prerequisites
+
+- Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
+- An IDE such as VSCode or Android Studio
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/zihadsikder/wempro_project
+   cd wempro_project

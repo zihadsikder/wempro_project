@@ -22,9 +22,9 @@ class AppTextStyles {
   }
 
   static TextStyle normalStyle(
-      {Color color = Colors.black, double fontSize = 16}) {
+      {Color color = Colors.black, double fontSize = 14}) {
     return TextStyle(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: fontSize,
       color: color,
 

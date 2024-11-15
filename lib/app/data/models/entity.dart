@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final entity = entityFromJson(jsonString);
-
 import 'dart:convert';
 
 Entity entityFromJson(String str) => Entity.fromJson(json.decode(str));

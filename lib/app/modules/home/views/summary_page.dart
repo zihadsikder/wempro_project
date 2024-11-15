@@ -30,7 +30,7 @@ class SummaryPage extends StatelessWidget {
                 ),
                 // Show number of selected inputs (responses)
                 Text(
-                  '${controller.responses.length} inputs',
+                  '${controller.responses.length} items',
                 ),
               ],
             ),
@@ -59,6 +59,12 @@ class SummaryPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // Display the title of the attribute (bolded)
+                                Icon(
+                                  Icons.square_outlined,
+                                  size: 18,
+                                  color: Colors.green,
+                                ),
+                                SizedBox(width: 8),
                                 Text(
                                   '${attribute.title} : ',
                                   style: AppTextStyles.normalStyle().copyWith(
@@ -71,6 +77,7 @@ class SummaryPage extends StatelessWidget {
                                   child: Text(
                                     entry.value?.toString() ?? "No Value",
                                     style: AppTextStyles.normalStyle(),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
@@ -80,7 +87,7 @@ class SummaryPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Edit Selection"),
+                      Text("Edit Selections"),
                       IconButton(
                         onPressed: () {
                           // Navigate back to the input page
