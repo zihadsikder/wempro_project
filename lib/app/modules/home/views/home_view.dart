@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                   ...attributes!.map((attribute) {
                     switch (attribute.type) {
                       case 'text':
-                      case 'textField': // Ensure textField type is handled
+                      case 'textfield': // Ensure textField type is handled
                         return TextFieldWidget(
                             field: attribute, controller: controller);
                       case 'dropdown':
