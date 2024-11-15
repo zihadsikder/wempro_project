@@ -10,5 +10,5 @@ class AppColors {
   static Color bgColor = const Color(0xffffffff);
   static Color screenBgColor = Colors.grey.shade100;
   static Color hintTextColor = const Color(0xffada9a9);
-  static Color iconColor = const Color(0xff878585);
+  static Color basicColor = const Color(0xff878585);
 }

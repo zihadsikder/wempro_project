@@ -34,25 +34,26 @@ class SummaryPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.only(top: 16, right: 16, left: 16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white
-              ),
+                  borderRadius: BorderRadius.circular(8), color: Colors.white),
               child: ListView(
                 shrinkWrap: true, // Prevent ListView from growing too large
                 children: [
                   // Check if there are any responses to show
                   if (controller.responses.isNotEmpty)
-                  // Iterate over each response in controller.responses
+                    // Iterate over each response in controller.responses
                     for (var entry in controller.responses.entries)
-                    // Find the corresponding attribute using the ID
-                      if (controller.entity.value?.jsonResponse?.attributes != null)
-                      // Find the attribute by ID
-                        for (var attribute
-                        in controller.entity.value!.jsonResponse!.attributes!)
+                      // Find the corresponding attribute using the ID
+                      if (controller.entity.value?.jsonResponse?.attributes !=
+                          null)
+                        // Find the attribute by ID
+                        for (var attribute in controller
+                            .entity.value!.jsonResponse!.attributes!)
                           if (attribute.id == entry.key)
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,8 +75,8 @@ class SummaryPage extends StatelessWidget {
                                 ),
                               ],
                             ), // Row with field title and value
-
-                  SizedBox(height: 8),
+                  SizedBox(height: 8.0),
+                  Container(height: 2, color: AppColors.hintTextColor),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -85,7 +86,10 @@ class SummaryPage extends StatelessWidget {
                           // Navigate back to the input page
                           Get.back();
                         },
-                        icon: Icon(Icons.arrow_forward_ios_outlined,size: 14,),
+                        icon: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          size: 14,
+                        ),
                       ),
                     ],
                   ),

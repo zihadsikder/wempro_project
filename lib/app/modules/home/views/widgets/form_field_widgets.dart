@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:wempro_project/app/core/constants/app_text_style.dart';
 
 import '../../../../data/models/entity.dart';
@@ -15,31 +16,27 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          field.title ?? "Title",
-          style: AppTextStyles.titleStyle(),
-        ),
-        SizedBox(height: 8),
-        TextFormField(
-          // Add validation here
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'This field is required'; // Error message
-            }
-            return null; // No error
-          },
-          decoration: InputDecoration(
-            labelText: field.title ?? "Title",
+    return Obx(() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            field.title ?? "Title",
+            style: Theme.of(context).textTheme.titleMedium,
           ),
-          onChanged: (value) {
-            controller.responses[field.id ?? ""] = value;
-          },
-        ),
-      ],
-    );
+          SizedBox(height: 8),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: field.title ?? "Title",
+              errorText: controller.errors[field.id ?? ""], // Display error
+            ),
+            onChanged: (value) {
+              controller.responses[field.id ?? ""] = value;
+            },
+          ),
+        ],
+      );
+    });
   }
 }
 
@@ -61,6 +58,7 @@ class DropdownWidget extends StatelessWidget {
         SizedBox(height: 8),
         DropdownButtonFormField<String>(
           decoration: InputDecoration(
+
             labelText: field.title ?? "Title",
             errorText: controller.responses[field.id ?? ""] == null && field.required
                 ? 'This field is required'  // Error if not selected

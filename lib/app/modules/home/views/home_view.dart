@@ -26,6 +26,7 @@ class HomeView extends GetView<HomeController> {
               ...attributes!.map((attribute) {
                 switch (attribute.type) {
                   case 'text':
+                  case 'textfield': // Ensure textfield type is handled
                     return TextFieldWidget(field: attribute, controller: controller);
                   case 'dropdown':
                     return DropdownWidget(field: attribute, controller: controller);
@@ -42,8 +43,15 @@ class HomeView extends GetView<HomeController> {
                 text: 'Submit',
                 onPressed: () {
                   if (controller.validateFields()) {
-                    // Navigate to Summary Page
                     Get.to(SummaryPage());
+                  } else {
+                    Get.snackbar(
+                      'Validation Error',
+                      'Please fill in all required fields',
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: Colors.redAccent,
+                      colorText: Colors.white,
+                    );
                   }
                 },
               ),

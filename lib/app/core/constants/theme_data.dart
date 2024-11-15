@@ -20,12 +20,12 @@ class AppThemeData {
 
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide.none,
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(4),
       ),
 
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 2, color: AppColors.iconColor),
-        borderRadius: BorderRadius.circular(32),
+        borderSide: BorderSide(width: 2, color: AppColors.basicColor),
+        borderRadius: BorderRadius.circular(4),
       ),
       hintStyle: TextStyle(
         color: AppColors.hintTextColor,
