@@ -87,6 +87,18 @@ class _HomeViewState extends State<HomeView> {
   String password = ''; // To track password input
   TextEditingController _controller = TextEditingController();
 
+  String _selectedCountryCode = '+880'; // Default country code
+  String _selectedCountryName = 'Bangladesh'; // Default country name
+
+  // Country data (code and name)
+  final List<Map<String, String>> countries = [
+    {'code': '+880', 'name': 'Bangladesh'},
+    {'code': '+1', 'name': 'United States'},
+    {'code': '+91', 'name': 'India'},
+    {'code': '+44', 'name': 'United Kingdom'},
+    {'code': '+81', 'name': 'Japan'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -302,11 +314,13 @@ class _HomeViewState extends State<HomeView> {
                       password = value; // Update password value
                     });
                   },
+
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock_outline, color: Colors.grey), // Lock Icon
                     suffixIcon: Icon(Icons.visibility_off, color: Colors.grey), // Eye Icon
                     labelText: 'Password',
+
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -353,6 +367,53 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ],
+                ),
+                SizedBox(height: 10),
+                TextField(
+                  readOnly: true, // Prevent manual editing
+                  decoration: InputDecoration(
+                    prefixIcon: Text(
+                      _selectedCountryCode, // Display the selected country code
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    prefixIconConstraints: BoxConstraints(minWidth: 60),
+                    suffixIcon: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _selectedCountryName,
+                        items: countries
+                            .map((country) => DropdownMenuItem<String>(
+                          value: country['name'],
+                          child: Text(country['name']!),
+                        ))
+                            .toList(),
+                        onChanged: (newValue) {
+                          setState(() {
+                            _selectedCountryName = newValue!;
+                            _selectedCountryCode = countries
+                                .firstWhere((country) => country['name'] == newValue)['code']!;
+                          });
+                        },
+                        icon: Icon(Icons.arrow_drop_down, color: Colors.grey),
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.yellow.shade700,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey.shade300,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                 ),
               ],
             ),
